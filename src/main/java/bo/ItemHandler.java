@@ -14,16 +14,21 @@ public class ItemHandler {
     public static boolean login(String user, String pass) { return ItemDB.checkLogin(user, pass); }
 
     // Korgen lagras i sessionen som Map<itemId, antal>
-    public static void addToCart(Map<Integer,Integer> cart, int itemId) {
-        if (ItemDB.getItem(itemId) != null) cart.merge(itemId, 1, Integer::sum);
+    public static void addToCart(String user, int itemId) {
+        if (ItemDB.getItem(itemId) != null) ItemDB.addToCart(user, itemId);
     }
 
-    public static List<ItemInfo> getCartItems(Map<Integer,Integer> cart) {
+    public static List<ItemInfo> getCartItems(String user) {
         List<ItemInfo> out = new ArrayList<>();
-        for (Map.Entry<Integer,Integer> e : cart.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : ItemDB.getCart(user).entrySet()) {
             Item i = ItemDB.getItem(e.getKey());
             if (i != null) out.add(new ItemInfo(i.getId(), i.getName(), i.getPrice(), e.getValue()));
         }
         return out;
     }
+
+    public static void clearCart(String user) {
+        ItemDB.clearCart(user);
+    }
+
 }
