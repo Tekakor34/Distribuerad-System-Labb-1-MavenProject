@@ -29,6 +29,6 @@
     </dependencies>
 
     <build>
-        <finalName>minShop</finalName>
+        <finalName>webshop</finalName>
     </build>
 </project>
