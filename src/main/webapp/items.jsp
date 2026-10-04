@@ -1,17 +1,26 @@
 <%@ page import="bo.ItemHandler, ui.ItemInfo, java.util.*" %>
+
+
 <%
-  if (session.getAttribute("user") == null) { response.sendRedirect("index.jsp"); return; }
+
+  if (session.getAttribute("user") == null) {
+    response.sendRedirect("index.jsp"); return;
+  }
 
   Map<Integer,Integer> cart = (Map<Integer,Integer>) session.getAttribute("cart");
-  if (cart == null) { cart = new HashMap<>(); session.setAttribute("cart", cart); }
+  if (cart == null) {
+    cart = new HashMap<>();
+    session.setAttribute("cart", cart);
+    }
 
   String add = request.getParameter("add");
   if (add != null) {
     ItemHandler.addToCart(cart, Integer.parseInt(add));
-    response.sendRedirect("items.jsp");   // undviker dubbelt tillägg vid F5
+    response.sendRedirect("items.jsp");
     return;
   }
 %>
+
 <html><body>
 <h2>Varor</h2>
 <table border="1">
@@ -32,3 +41,7 @@
 </table>
 <p>Totalt: <%= total %> kr</p>
 </body></html>
+
+<html><body>
+<p>Inloggad som <%= session.getAttribute("user") %> | <a href="logout.jsp">Logga ut</a></p>
+<h2>Varor</h2>

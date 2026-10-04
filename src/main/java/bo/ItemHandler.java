@@ -8,6 +8,7 @@ public class ItemHandler {
         List<ItemInfo> out = new ArrayList<>();
         for (Item i : ItemDB.getAllItems()) out.add(new ItemInfo(i.getId(), i.getName(), i.getPrice()));
         return out;
+
     }
 
     public static boolean login(String user, String pass) { return ItemDB.checkLogin(user, pass); }
