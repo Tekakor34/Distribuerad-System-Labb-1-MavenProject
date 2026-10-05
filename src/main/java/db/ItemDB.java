@@ -1,6 +1,5 @@
 package db;
 
-import bo.Item;
 import java.sql.*;
 import java.util.*;
 

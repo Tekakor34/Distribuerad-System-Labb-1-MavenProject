@@ -10,7 +10,7 @@
     return;
   }
 
-  List<ItemInfo> cartItems = ItemHandler.getCartItems(user);
+  List<Item> cartItems = ItemHandler.getCartItems(user);
   double total = 0;
 %>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
   <% } else { %>
   <table>
     <tr><th>Namn</th><th class="num">Antal</th><th class="num">À-pris</th><th class="num">Summa</th></tr>
-    <% for (ItemInfo i : cartItems) {
+        <% for (Item i : cartItems) {
          double sum = i.getPrice() * i.getQuantity();
          total += sum; %>
     <tr>

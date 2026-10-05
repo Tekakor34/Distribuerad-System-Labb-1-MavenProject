@@ -27,9 +27,9 @@
     return;
   }
 
-    List<ItemInfo> items = ItemHandler.getItems();
-    int cartCount = 0;
-    for (ItemInfo c : ItemHandler.getCartItems(user)) cartCount += c.getQuantity();
+     List<Item> items = ItemHandler.getItems();
+        int cartCount = 0;
+        for (Item c : ItemHandler.getCartItems(user)) cartCount += c.getQuantity();
   %>
 <!DOCTYPE html>
 <html lang="sv">
@@ -43,14 +43,14 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Webbshop</h1>
-    <div>
-        Inloggad som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
-         <a class="btn" href="cart.jsp">Visa korg (<%= cartCount %>)</a> |
-          <a href="items.jsp?logout=1">Logga ut</a>
-    </div>
-  </header>
+   <header>
+     <h1>Webbshop</h1>
+     <p>
+       Inloggad som <b><%= user %></b> |
+       <a href="cart.jsp">Visa korg (<%= cartCount %>)</a> |
+       <a href="logout.jsp">Logga ut</a>
+     </p>
+   </header>
 
   <h2>Varor</h2>
   <% if (items.isEmpty()) { %>
@@ -58,7 +58,7 @@
   <% } else { %>
   <table>
     <tr><th>Namn</th><th class="num">Pris</th><th></th></tr>
-    <% for (ItemInfo i : items) { %>
+     <% for (Item i : items) { %>
     <tr>
       <td><%= i.getName() %></td>
       <td class="num"><%= String.format("%.2f", i.getPrice()) %> kr</td>
