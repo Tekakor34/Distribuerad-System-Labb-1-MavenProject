@@ -139,5 +139,5 @@ Anslutningen konfigureras i `src/main/java/db/DBManager.java`:
 - Ingen hantering av betalning eller beställning.
 
 ## Medlemmar
-Alf Maximillian Cardinaux
+Alf Maximillian Cardinaux,
 Robin Bagcivanci
