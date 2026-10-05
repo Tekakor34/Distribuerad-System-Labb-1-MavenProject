@@ -19,20 +19,15 @@
   <meta charset="UTF-8">
   <title>Varukorg</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 15px; }
-    header { display: flex; justify-content: space-between; align-items: center; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
-    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
-    .num { text-align: right; }
-    .btn { background: #2d6cdf; color: #fff; padding: 5px 10px; border-radius: 4px; text-decoration: none; }
-    .gray { background: #777; }
-    .total { text-align: right; font-weight: bold; }
-    .empty { color: #777; }
+ body {
+    font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ccc; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Cart</h1>
+    <h1>Varukorg</h1>
     <div>Inloggad som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
   </header>
 

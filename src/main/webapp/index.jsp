@@ -21,14 +21,9 @@
   <meta charset="UTF-8">
   <title>Logga in</title>
   <style>
-    body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
-           font-family: Arial, sans-serif; background: #f2f4f8; }
-    form { width: 280px; padding: 30px; background: #fff; border-radius: 8px;
-           box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-    h2 { margin: 0 0 20px; text-align: center; }
-    input { width: 100%; padding: 9px; margin-bottom: 14px; box-sizing: border-box; font-size: 15px; }
-    input[type=submit] { background: #2d6cdf; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
-    .error { color: #c00; text-align: center; margin: 0 0 14px; }
+     body { font-family: Arial, sans-serif; text-align: center; margin-top: 80px; }
+       input { display: block; margin: 10px auto; padding: 8px; width: 220px; }
+       .error { color: red; }
   </style>
 </head>
 <body>
