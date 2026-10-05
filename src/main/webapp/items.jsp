@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"
-         import="bo.ItemHandler, ui.ItemInfo, java.util.*" %>
+            import="bo.ItemHandler, bo.Item, java.util.*" %>
 
 <%
 
