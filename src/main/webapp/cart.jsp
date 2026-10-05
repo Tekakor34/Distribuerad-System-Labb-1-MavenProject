@@ -17,7 +17,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Cart</title>
+  <title>Varukorg</title>
   <style>
     body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 15px; }
     header { display: flex; justify-content: space-between; align-items: center; }
@@ -33,13 +33,13 @@
 <body>
   <header>
     <h1>Cart</h1>
-    <div>Logged in som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
+    <div>Inloggad som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
   </header>
 
-  <p><a href="items.jsp">&larr; Back to items</a></p>
+  <p><a href="items.jsp">&larr; Tillbaka till produkter</a></p>
 
   <% if (cartItems.isEmpty()) { %>
-    <p class="empty">Cart empty.</p>
+    <p class="empty">Varukorg tom.</p>
   <% } else { %>
   <table>
     <tr><th>Namn</th><th class="num">Antal</th><th class="num">À-pris</th><th class="num">Summa</th></tr>
