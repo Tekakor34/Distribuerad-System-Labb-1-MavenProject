@@ -15,12 +15,6 @@
       return;
   }
 
-  if (request.getParameter("clear") != null) {
-       ItemHandler.clearCart(user);
-       response.sendRedirect("items.jsp");
-       return;
-  }
-
   String add = request.getParameter("add");
   if (add != null) {
     try {
@@ -34,10 +28,9 @@
   }
 
     List<ItemInfo> items = ItemHandler.getItems();
-    List<ItemInfo> cartItems = ItemHandler.getCartItems(user);
-    double total = 0;
-
-%>
+    int cartCount = 0;
+    for (ItemInfo c : ItemHandler.getCartItems(user)) cartCount += c.getQuantity();
+  %>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -58,7 +51,11 @@
 <body>
   <header>
     <h1>Webbshop</h1>
-    <div>Inloggad som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
+    <div>
+        Inloggad som <b><%= user %></b> | <a href="items.jsp?logout=1">Logga ut</a></div>
+         <a class="btn" href="cart.jsp">Visa korg (<%= cartCount %>)</a> |
+          <a href="items.jsp?logout=1">Logga ut</a>
+    </div>
   </header>
 
   <h2>Varor</h2>
@@ -75,27 +72,6 @@
     </tr>
     <% } %>
   </table>
-  <% } %>
-
-  <h2>Din korg</h2>
-  <% if (cartItems.isEmpty()) { %>
-    <p class="empty">Korgen är tom.</p>
-  <% } else { %>
-  <table>
-    <tr><th>Namn</th><th class="num">Antal</th><th class="num">À-pris</th><th class="num">Summa</th></tr>
-    <% for (ItemInfo i : cartItems) {
-         double sum = i.getPrice() * i.getQuantity();
-         total += sum; %>
-    <tr>
-      <td><%= i.getName() %></td>
-      <td class="num"><%= i.getQuantity() %> st</td>
-      <td class="num"><%= String.format("%.2f", i.getPrice()) %> kr</td>
-      <td class="num"><%= String.format("%.2f", sum) %> kr</td>
-    </tr>
-    <% } %>
-  </table>
-  <p class="total">Totalt: <%= String.format("%.2f", total) %> kr</p>
-  <a class="btn gray" href="items.jsp?clear=1">Töm korgen</a>
   <% } %>
 </body>
 </html>
