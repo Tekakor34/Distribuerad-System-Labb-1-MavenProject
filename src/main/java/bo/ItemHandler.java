@@ -1,33 +1,28 @@
 package bo;
-
 import db.ItemDB;
-import db.ItemRecord;
+import ui.ItemInfo;
 import java.util.*;
 
 public class ItemHandler {
-
-    public static List<Item> getItems() {
-        List<Item> out = new ArrayList<>();
-        for (ItemRecord r : ItemDB.getAllItems())
-            out.add(new Item(r.getId(), r.getName(), r.getPrice()));
+    public static List<ItemInfo> getItems() {
+        List<ItemInfo> out = new ArrayList<>();
+        for (Item i : ItemDB.getAllItems()) out.add(new ItemInfo(i.getId(), i.getName(), i.getPrice()));
         return out;
+
     }
 
-    public static boolean login(String user, String pass) {
-        if (user == null || user.isEmpty() || pass == null || pass.isEmpty()) return false;
-        return ItemDB.checkLogin(user, pass);
-    }
+    public static boolean login(String user, String pass) { return ItemDB.checkLogin(user, pass); }
 
-    // Korgen lagras i databasen (tabellen cart_items), en rad per användare och vara
+    // Korgen lagras i sessionen som Map<itemId, antal>
     public static void addToCart(String user, int itemId) {
         if (ItemDB.getItem(itemId) != null) ItemDB.addToCart(user, itemId);
     }
 
-    public static List<Item> getCartItems(String user) {
-        List<Item> out = new ArrayList<>();
+    public static List<ItemInfo> getCartItems(String user) {
+        List<ItemInfo> out = new ArrayList<>();
         for (Map.Entry<Integer, Integer> e : ItemDB.getCart(user).entrySet()) {
-            ItemRecord r = ItemDB.getItem(e.getKey());
-            if (r != null) out.add(new Item(r.getId(), r.getName(), r.getPrice(), e.getValue()));
+            Item i = ItemDB.getItem(e.getKey());
+            if (i != null) out.add(new ItemInfo(i.getId(), i.getName(), i.getPrice(), e.getValue()));
         }
         return out;
     }
@@ -35,4 +30,5 @@ public class ItemHandler {
     public static void clearCart(String user) {
         ItemDB.clearCart(user);
     }
+
 }

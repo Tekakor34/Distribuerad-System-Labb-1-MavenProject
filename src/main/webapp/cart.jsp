@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"
-            import="bo.ItemHandler, bo.Item, java.util.*" %>
+         import="bo.ItemHandler, ui.ItemInfo, java.util.*" %>
 <%
   String user = (String) session.getAttribute("user");
   if (user == null) { response.sendRedirect("index.jsp"); return; }
@@ -10,7 +10,7 @@
     return;
   }
 
-  List<Item> cartItems = ItemHandler.getCartItems(user);
+  List<ItemInfo> cartItems = ItemHandler.getCartItems(user);
   double total = 0;
 %>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
   <% } else { %>
   <table>
     <tr><th>Namn</th><th class="num">Antal</th><th class="num">À-pris</th><th class="num">Summa</th></tr>
-        <% for (Item i : cartItems) {
+    <% for (ItemInfo i : cartItems) {
          double sum = i.getPrice() * i.getQuantity();
          total += sum; %>
     <tr>
